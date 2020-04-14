@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Customer</title>
+    <link rel='stylesheet' href='http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css'>
+</head>
+<body class="container">
+<br/>
+<h1>客户信息列表</h1>
+<br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>客户名称</th>
+            <th>性别</th>
+            <th>地址</th>
+            <th>办公电话</th>
+            <th>创建时间</th>
+            <th>上一次更新时间</th>
+            <th>是否删除</th>
+            <th>修改</th>
+            <th>删除</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="customers : ${customers}">
+            <th scope="row" th:text="${customers.customerId}">1</th>
+            <td th:text="${customers.customerName}">neo</td>
+            <td th:text="${customers.sex}">Otto</td>
+            <td th:text="${customers.address}">6</td>
+            <td th:text="${customers.telephone}">6</td>
+            <td th:text="${customers.createTime}">6</td>
+            <td th:text="${customers.updateTime}">6</td>
+            <td>
+                <p>
+                    <span th:if="${customers.isDel} == 0">否</span>
+                    <span th:if="${customers.isDel} == 1">是</span>
+                </p>
+
+            </td>
+            <td><a th:href="@{/customer/toEdit(id=${customers.customerId})}">edit</a></td>
+            <td><a th:href="@{/customer/delete(id=${customers.customerId})}">delete</a></td>
+            <!--<td><a onclick="member_del(this,'id=${customers.customerId}')"  href="javascript:;">delete</a></td>-->
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a href="/customer/toAdd" th:href="@{/customer/toAdd}" class="btn btn-info">add</a>
+    </div>
+</div>
+
+<!--<script>
+
+    /*删除*/
+    function member_del(obj,customerId){
+        layer.confirm('确认要删除吗？',function(index){
+            //发异步删除数据
+            $.get("th:href=@{/customer/delete}",{"customerId":customerId},function (data) {
+                if(data =true){
+                    layer.msg('删除成功!',{icon:1,time:2000});
+                    setTimeout(function () {window.location.href='${pageContext.request.contextPath}/customer/selectList';},2000);
+
+                }else {
+                    layer.msg('删除失败!',{icon:1,time:3000});
+                    setTimeout(function () {window.location.href='${pageContext.request.contextPath}/findOpportunities';},2000);
+                }
+            });
+        });
+    }
+
+</script>-->
+
+</body>
+</html>

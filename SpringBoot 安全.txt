@@ -1,0 +1,55 @@
+一、Spring Boot 安全有哪些方案？
+
+1.在生产中使用HTTPS
+2.使用Snyk检查你的依赖关系
+3.升级到最新版本
+4.启用CSRF保护
+5.使用内容安全策略防止XSS攻击
+6.使用OpenID Connect进行身份验证
+7.管理密码？使用密码哈希！
+8.安全地存储秘密
+9.使用OWASP的ZAP测试您的应用程序
+10.让你的安全团队进行代码审查
+
+
+
+二、Apache Shiro能做什么？
+
+Apache Shiro 是一个强大而灵活的开源安全框架，它干净利落地处理身份认证，授权，企业会话管理和加密。Apache Shiro 的首要目标是易于使用和理解。安全有时候是很复杂的，甚至是痛苦的，但它没有必要这样。框架应该尽可能掩盖复杂的地方，露出一个干净而直观的 API，来简化开发人员在应用程序安全上所花费的时间。
+
+以下是你可以用 Apache Shiro 所做的事情：
+
+1、验证用户来核实他们的身份
+
+2、对用户执行访问控制，如：判断用户是否被分配了一个确定的安全角色；判断用户是否被允许做某事
+
+3、在任何环境下使用 Session API，即使没有 Web 容器
+
+4、在身份验证，访问控制期间或在会话的生命周期，对事件作出反应
+
+5、聚集一个或多个用户安全数据的数据源，并作为一个单一的复合用户“视图”
+
+6、单点登录（SSO）功能
+
+7、为没有关联到登录的用户启用"Remember Me"服务
+
+
+
+三、Spring Boot 整合Shiro 实现登录验证需要哪些步骤？
+
+1、添加Shiro依赖
+2、创建一个Realm继承AuthorizingRealm，重写AuthenticationInfo
+doGetAuthenticationInfo(AutthnicationToken authenticaionToken)
+认证（登录）逻辑。
+3、创建一个Shio配置类。
+
+
+四、Spring Boot 整合Shiro 实现权限管理需要哪些步骤
+1、pom.xml中添加Shiro依赖；
+2、注入Shiro Factory和SecurityManager。
+3、身份认证
+4、权限控制
+5、pom.xml中添加Shiro依赖；
+6、创建一个Shio配置类。
+
+
